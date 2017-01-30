@@ -14,11 +14,14 @@ class Daftar extends CI_Controller {
 
 	public function index()
 	{
+            if($this->session->userdata('login')){
 		$data = array(
 			'konten'=>'pendaftaran/Formktp',
 		);
 
-		$this->load->view('template/Template', $data);
+            $this->load->view('template/Template', $data);}
+                else
+                redirect('Login');
 	}
 
 	//untuk memeriksa apakah ktp yang digunakan sudah terdaftar

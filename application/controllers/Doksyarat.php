@@ -14,9 +14,13 @@ class Doksyarat extends CI_Controller {
 
 	public function index()
 	{
+            if($this->session->userdata('login')){
 		$data = array(
 			'konten'=>'dokumensyarat/Formdatasyarat');
 		$this->load->view('template/Template',$data);
+        }
+        else
+                redirect('Login');
 	}
 
 }
