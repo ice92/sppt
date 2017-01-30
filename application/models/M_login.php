@@ -17,7 +17,7 @@ class M_login extends CI_Model {
 
 		$query = $this->db->where('ap_ktp',$ktp)
 						  ->where('password',$password)
-						  ->limit(1)
+                                                  ->limit(1)
 						  ->get($this->db_tabel);
 		if($query->num_rows()==1){
 			$user=$this->pemohon->getdata($ktp);
@@ -29,12 +29,58 @@ class M_login extends CI_Model {
 					
 				);
 			$this->session->set_userdata($data);
-
-			return true;
+                        //query untuk mengecek level
+                        $query = $this->db->where('ap_ktp',$ktp)
+						  ->where('level','0')
+						  ->limit(1)
+						  ->get($this->db_tabel);
+                        if($query->num_rows()==1)
+			return 1;
+                        else{
+                            $query = $this->db->where('ap_ktp',$ktp)
+						  ->where('level','2')
+						  ->limit(1)
+						  ->get($this->db_tabel);
+                            if($query->num_rows()==1)
+			return 2;
+                            else{
+                            $query = $this->db->where('ap_ktp',$ktp)
+						  ->where('level','3')
+						  ->limit(1)
+						  ->get($this->db_tabel);
+                            if($query->num_rows()==1)
+			return 3;
+                            else{
+                            $query = $this->db->where('ap_ktp',$ktp)
+						  ->where('level','4')
+						  ->limit(1)
+						  ->get($this->db_tabel);
+                            if($query->num_rows()==1)
+			return 4;
+                            else{
+                            $query = $this->db->where('ap_ktp',$ktp)
+						  ->where('level','5')
+						  ->limit(1)
+						  ->get($this->db_tabel);
+                            if($query->num_rows()==1)
+			return 5;
+                            else{
+                            $query = $this->db->where('ap_ktp',$ktp)
+						  ->where('level','6')
+						  ->limit(1)
+						  ->get($this->db_tabel);
+                            if($query->num_rows()==1)
+			return 6;
+                        }
+                        }
+                        }
+                        }
+                        }
+                            
 
 		}else{
 
-			return false;
+			return 0;
 		}
 	}
 
