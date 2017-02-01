@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2017 at 05:24 AM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 5.6.15
+-- Generation Time: 01 Feb 2017 pada 04.39
+-- Versi Server: 10.1.16-MariaDB
+-- PHP Version: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `districts`
+-- Struktur dari tabel `admin`
+--
+
+CREATE TABLE `admin` (
+  `adm_id` int(2) NOT NULL,
+  `adm_userid` varchar(30) NOT NULL,
+  `adm_password` varchar(50) NOT NULL,
+  `level` char(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`adm_id`, `adm_userid`, `adm_password`, `level`) VALUES
+(1, 'operator', 'operator', 'operator'),
+(2, 'subag', 'subag', 'subag');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `districts`
 --
 
 CREATE TABLE `districts` (
@@ -33,7 +54,7 @@ CREATE TABLE `districts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `districts`
+-- Dumping data untuk tabel `districts`
 --
 
 INSERT INTO `districts` (`id`, `regency_id`, `name`) VALUES
@@ -92,7 +113,7 @@ INSERT INTO `districts` (`id`, `regency_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_akun`
+-- Struktur dari tabel `dp_akun`
 --
 
 CREATE TABLE `dp_akun` (
@@ -102,26 +123,29 @@ CREATE TABLE `dp_akun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dp_akun`
+-- Dumping data untuk tabel `dp_akun`
 --
 
 INSERT INTO `dp_akun` (`ap_ktp`, `password`, `level`) VALUES
-('5203040909930001', '5203040909930001', '0'),
+('123', '123', '2'),
+('132', '123', '0'),
+('33.33.33.33.33.3333', '123', '0'),
+('456', '123', '0'),
+('5203040909930001', '5203040909930001', '2'),
 ('5203040909930002', '5203040909930002', '0'),
 ('5203040909930003', '5203040909930003', '0'),
 ('5203040909930004', '5203040909930004', '0'),
 ('5203040909930005', '5203040909930005', '0'),
 ('5203040909930006', '5203040909930006', '0'),
-('admin', '123', '6'),
-('kabad', '123', '5'),
-('kabid', '123', '4'),
-('kasubid', '778', '3'),
-('petugas', '123', '2');
+('555', '123', '0'),
+('77.77.77.77.77.7777', 'ely123', '0'),
+('778', '778', '0'),
+('989898', '123', '0');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_datapemohon`
+-- Struktur dari tabel `dp_datapemohon`
 --
 
 CREATE TABLE `dp_datapemohon` (
@@ -141,11 +165,14 @@ CREATE TABLE `dp_datapemohon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dp_datapemohon`
+-- Dumping data untuk tabel `dp_datapemohon`
 --
 
 INSERT INTO `dp_datapemohon` (`dp_ktp`, `dp_nama`, `dp_alamat`, `dp_email`, `dp_hp`, `dp_poto`, `sms`, `email`, `verifikasi`, `provinsi`, `kabupaten`, `kecamatan`, `desa`) VALUES
+('123', 'yuyuyu', 'yuyuy', 'elyhumairoh@gmail.com', 'iko', NULL, NULL, NULL, 'y', '52', '5201', '5201030', '5201030009'),
 ('132', 'ely', 'hg', 'jk@f', 'kl', NULL, NULL, NULL, 'y', '52', '5201', '5201010', '5201010001'),
+('33.33.33.33.33.3333', 'humairoh', 'irigasi', 'elyhumairoh@gmail.com', '333', NULL, 1, 1, 'y', '52', '5201', '5201011', '5201011008'),
+('456', 'ely', 'ukj', 'elyhumairoh@gmail.com', '8888', NULL, NULL, NULL, 'y', '52', '5201', '5201061', '5201061007'),
 ('5203040909930001', 'I Made Ramlie Suandha', 'Dusun Orong Bukal Desa Gili Gede Indah.', 'imade@gmail.com', '082340207784', NULL, NULL, NULL, 'y', '52', '5201', '5201010', '5201010008'),
 ('5203040909930002', 'H. Muh. Mahdi', 'Dusun Sayong Baru Desa Cendi Manik.', 'mahdi@gmail.com', '082340207781', NULL, NULL, NULL, 'y', '52', '5201', '5201010', '5201010007'),
 ('5203040909930003', 'Henri Paul Piere Vulcain', 'Dusun Labuan Cendik Desa Gili Gede Indah.', 'paul@gmail.com', '082340207782', NULL, NULL, NULL, 'y', '52', '5201', '5201010', '5201010008'),
@@ -159,7 +186,7 @@ INSERT INTO `dp_datapemohon` (`dp_ktp`, `dp_nama`, `dp_alamat`, `dp_email`, `dp_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_datapermohonanizin`
+-- Struktur dari tabel `dp_datapermohonanizin`
 --
 
 CREATE TABLE `dp_datapermohonanizin` (
@@ -175,39 +202,35 @@ CREATE TABLE `dp_datapermohonanizin` (
   `dpi_lokasi` varchar(100) NOT NULL,
   `dpi_keterangan` text NOT NULL,
   `dpi_tanggal` varchar(30) NOT NULL,
-  `dpi_dok_ktp` varchar(30) DEFAULT NULL,
-  `dpi_dok_npwp` varchar(30) DEFAULT NULL,
-  `dpi_valktp1` char(1) NOT NULL DEFAULT '0' COMMENT '0 tidak valid, 1 valid',
-  `dpi_valktp2` char(1) NOT NULL DEFAULT '0' COMMENT '0 tidak valid, 1 valid',
-  `dpi_valnpwp1` char(1) NOT NULL DEFAULT '0' COMMENT '0 tidak valid, 1 valid',
-  `dpi_valnpwp2` char(1) NOT NULL DEFAULT '0' COMMENT '0 tidak valid, 1 valid',
-  `status` int(1) NOT NULL DEFAULT '0' COMMENT '0 masih proses verifikasi, 1 telah disetujui'
+  `status` int(1) NOT NULL DEFAULT '0' COMMENT '0 masih proses verifikasi, 1 telah disetujui',
+  `dokiup` varchar(15) NOT NULL,
+  `doktdp` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dp_datapermohonanizin`
+-- Dumping data untuk tabel `dp_datapermohonanizin`
 --
 
-INSERT INTO `dp_datapermohonanizin` (`dpi_id`, `dpi_no_ident`, `dpi_jenisizin`, `dpi_jenispermohonan`, `dpi_namausaha`, `dpi_badanusaha`, `dpi_npwp`, `dpi_kecamatan`, `dpi_desa`, `dpi_lokasi`, `dpi_keterangan`, `dpi_tanggal`, `dpi_dok_ktp`, `dpi_dok_npwp`, `dpi_valktp1`, `dpi_valktp2`, `dpi_valnpwp1`, `dpi_valnpwp2`, `status`) VALUES
-(40, '52.03.04.09.93.0005', 'siup', 1, 'Kotaraja Komputer', 'vc', '2344466475454', '5201020', '5201020007', 'Jalan sudirman No. 3 Beleke', 'Menjual perangkat computer, laptop, dan aksesorisnya', 'Rabu, 01 Juni 2016', '7.PNG', '4.PNG', '1', '2', '1', '2', 1),
-(41, '77.77.77.77.77.7777', 'siup', 1, 'dsc', 'cv', 'ws2w2e2', '5201011', '5201011001', 'sdsdws', 'ingin membuat', 'Kamis, 24 November 2016', NULL, NULL, '0', '0', '0', '0', 0),
-(42, '77.77.77.77.77.7777', 'situ', 4, 'djdb', 'cv', '', '5201010', '5201010001', 'eded', 'dece', 'Rabu, 14 Desember 2016', NULL, NULL, '0', '0', '0', '0', 0),
-(43, '77.77.77.77.77.7777', 'situ', 4, 'fiejf', 'cv', '', '5201010', '5201010001', 'fv', '', 'Jumat, 16 Desember 2016', NULL, NULL, '0', '0', '0', '0', 0),
-(44, '77.77.77.77.77.7777', 'situ', 4, 'adj', 'cv', '', '5201011', '5201011002', 'ss', '', 'Senin, 19 Desember 2016', NULL, NULL, '0', '0', '0', '0', 0),
-(45, '77.77.77.77.77.7777', 'situ', 4, 'adj', 'cv', '', '5201011', '5201011002', 'ss', '', 'Senin, 19 Desember 2016', NULL, NULL, '0', '0', '0', '0', 0),
-(46, '77.77.77.77.77.7777', 'situ', 4, 'adj', 'cv', '', '5201011', '5201011002', 'ss', '', 'Senin, 19 Desember 2016', NULL, NULL, '0', '0', '0', '0', 0),
-(47, '77.77.77.77.77.7777', 'situ', 4, 'adj', 'cv', '', '5201011', '5201011002', 'ss', '', 'Senin, 19 Desember 2016', NULL, NULL, '0', '0', '0', '0', 0),
-(48, '77.77.77.77.77.7777', 'situ', 4, 'adj', 'cv', '', '5201011', '5201011002', 'ss', '', 'Senin, 19 Desember 2016', NULL, NULL, '0', '0', '0', '0', 0),
-(49, '77.77.77.77.77.7777', 'situ', 4, 'adj', 'cv', '', '5201011', '5201011002', 'ss', '', 'Senin, 19 Desember 2016', NULL, NULL, '0', '0', '0', '0', 0),
-(50, '77.77.77.77.77.7777', 'situ', 4, 'adj', 'cv', '', '5201011', '5201011002', 'ss', '', 'Senin, 19 Desember 2016', NULL, NULL, '0', '0', '0', '0', 0),
-(51, '77.77.77.77.77.7777', 'situ', 4, 'ss', 'cv', '', '5201020', '5201020005', '', '', 'Selasa, 20 Desember 2016', NULL, NULL, '0', '0', '0', '0', 0),
-(52, '77.77.77.77.77.7777', 'situ', 4, 'yyuuuuuuuuu', 'fa', '', '5201011', '5201011003', 'jjkkk', '', 'Selasa, 20 Desember 2016', NULL, NULL, '0', '0', '0', '0', 0),
-(53, '77.77.77.77.77.7777', 'siup', 1, 'wre', 'cv', '', '5201010', '5201010002', 'dfcde', 'efe', 'Sabtu, 24 Desember 2016', NULL, NULL, '0', '0', '0', '0', 0);
+INSERT INTO `dp_datapermohonanizin` (`dpi_id`, `dpi_no_ident`, `dpi_jenisizin`, `dpi_jenispermohonan`, `dpi_namausaha`, `dpi_badanusaha`, `dpi_npwp`, `dpi_kecamatan`, `dpi_desa`, `dpi_lokasi`, `dpi_keterangan`, `dpi_tanggal`, `status`, `dokiup`, `doktdp`) VALUES
+(40, '52.03.04.09.93.0005', 'siup', 1, 'Kotaraja Komputer', 'vc', '2344466475454', '5201020', '5201020007', 'Jalan sudirman No. 3 Beleke', 'Menjual perangkat computer, laptop, dan aksesorisnya', 'Rabu, 01 Juni 2016', 1, '', ''),
+(41, '77.77.77.77.77.7777', 'siup', 1, 'dsc', 'cv', 'ws2w2e2', '5201011', '5201011001', 'sdsdws', 'ingin membuat', 'Kamis, 24 November 2016', 0, '', ''),
+(42, '77.77.77.77.77.7777', 'situ', 4, 'djdb', 'cv', '', '5201010', '5201010001', 'eded', 'dece', 'Rabu, 14 Desember 2016', 0, '', ''),
+(43, '77.77.77.77.77.7777', 'situ', 4, 'fiejf', 'cv', '', '5201010', '5201010001', 'fv', '', 'Jumat, 16 Desember 2016', 0, '', ''),
+(44, '77.77.77.77.77.7777', 'situ', 4, 'adj', 'cv', '', '5201011', '5201011002', 'ss', '', 'Senin, 19 Desember 2016', 0, '', ''),
+(45, '77.77.77.77.77.7777', 'situ', 4, 'adj', 'cv', '', '5201011', '5201011002', 'ss', '', 'Senin, 19 Desember 2016', 0, '', ''),
+(46, '77.77.77.77.77.7777', 'situ', 4, 'adj', 'cv', '', '5201011', '5201011002', 'ss', '', 'Senin, 19 Desember 2016', 0, '', ''),
+(47, '77.77.77.77.77.7777', 'situ', 4, 'adj', 'cv', '', '5201011', '5201011002', 'ss', '', 'Senin, 19 Desember 2016', 0, '', ''),
+(48, '77.77.77.77.77.7777', 'situ', 4, 'adj', 'cv', '', '5201011', '5201011002', 'ss', '', 'Senin, 19 Desember 2016', 0, '', ''),
+(49, '77.77.77.77.77.7777', 'situ', 4, 'adj', 'cv', '', '5201011', '5201011002', 'ss', '', 'Senin, 19 Desember 2016', 0, '', ''),
+(50, '77.77.77.77.77.7777', 'situ', 4, 'adj', 'cv', '', '5201011', '5201011002', 'ss', '', 'Senin, 19 Desember 2016', 0, '', ''),
+(51, '77.77.77.77.77.7777', 'situ', 4, 'ss', 'cv', '', '5201020', '5201020005', '', '', 'Selasa, 20 Desember 2016', 0, '', ''),
+(52, '77.77.77.77.77.7777', 'situ', 4, 'yyuuuuuuuuu', 'fa', '', '5201011', '5201011003', 'jjkkk', '', 'Selasa, 20 Desember 2016', 0, '', ''),
+(53, '77.77.77.77.77.7777', 'siup', 1, 'wre', 'cv', '', '5201010', '5201010002', 'dfcde', 'efe', 'Sabtu, 24 Desember 2016', 0, '', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_desa`
+-- Struktur dari tabel `dp_desa`
 --
 
 CREATE TABLE `dp_desa` (
@@ -219,7 +242,7 @@ CREATE TABLE `dp_desa` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_dokpermohonan`
+-- Struktur dari tabel `dp_dokpermohonan`
 --
 
 CREATE TABLE `dp_dokpermohonan` (
@@ -237,7 +260,7 @@ CREATE TABLE `dp_dokpermohonan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_doksiup`
+-- Struktur dari tabel `dp_doksiup`
 --
 
 CREATE TABLE `dp_doksiup` (
@@ -256,7 +279,7 @@ CREATE TABLE `dp_doksiup` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dp_doksiup`
+-- Dumping data untuk tabel `dp_doksiup`
 --
 
 INSERT INTO `dp_doksiup` (`dokiup_id`, `dokiup_ktp`, `dokiup_akta`, `dokiup_pbhk`, `dokiup_situ`, `dokiup_suplegalisir`, `dokiup_ho`, `dokiup_pbb`, `dokiup_formulir`, `dokiup_sk`, `dokiup_iuranbpjs`, `dokiup_idsiup`) VALUES
@@ -269,7 +292,7 @@ INSERT INTO `dp_doksiup` (`dokiup_id`, `dokiup_ktp`, `dokiup_akta`, `dokiup_pbhk
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_doktdp`
+-- Struktur dari tabel `dp_doktdp`
 --
 
 CREATE TABLE `dp_doktdp` (
@@ -288,7 +311,7 @@ CREATE TABLE `dp_doktdp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dp_doktdp`
+-- Dumping data untuk tabel `dp_doktdp`
 --
 
 INSERT INTO `dp_doktdp` (`doktdp_id`, `doktdp_ktp`, `doktdp_aktapedirian`, `doktdp_npwp`, `doktdp_ijinusaha`, `doktdp_situ`, `doktdp_ho`, `doktdp_tdp`, `doktdp_sppc`, `doktdp_formulir`, `doktdp_iuranbpjs`, `doktdp_idtdp`) VALUES
@@ -299,7 +322,7 @@ INSERT INTO `dp_doktdp` (`doktdp_id`, `doktdp_ktp`, `doktdp_aktapedirian`, `dokt
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_izin`
+-- Struktur dari tabel `dp_izin`
 --
 
 CREATE TABLE `dp_izin` (
@@ -321,7 +344,7 @@ CREATE TABLE `dp_izin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dp_izin`
+-- Dumping data untuk tabel `dp_izin`
 --
 
 INSERT INTO `dp_izin` (`izin_id`, `izin_kode_izin`, `izin_kode_jenis`, `izin_tglterbit`, `izin_tglberakhir`, `izin_id_koordinat`, `izin_kecamatan`, `izin_no_sk`, `izin_gambar`, `izin_status`, `izin_ver_kasubid`, `izin_ver_kabid`, `izin_ver_kabad`, `izin_ver_petugas`, `izin_ktp`) VALUES
@@ -333,25 +356,17 @@ INSERT INTO `dp_izin` (`izin_id`, `izin_kode_izin`, `izin_kode_jenis`, `izin_tgl
 (9, 'tdp_16', 'tdp', '2015-04-14', '2016-08-24', 'koor_tdp_16', 5201050, NULL, NULL, 1, 0, 0, 0, 0, ''),
 (10, 'iup_15', 'siup', NULL, NULL, 'koor_iup_15', 5201040, NULL, NULL, 0, 0, 0, 0, 0, ''),
 (11, 'tdp_17', 'tdp', NULL, NULL, 'koor_tdp_17', 5202040, NULL, NULL, 0, 0, 0, 0, 0, ''),
-(12, 'tdp_18', 'tdp', NULL, NULL, NULL, 5201011, NULL, NULL, 0, 0, 0, 0, 0, ''),
-(13, 'iup_16', 'siup', NULL, NULL, NULL, 5202061, NULL, NULL, 0, 0, 0, 0, 0, ''),
-(14, 'iup_17', 'siup', NULL, NULL, NULL, 5201010, NULL, NULL, 0, 0, 0, 0, 0, ''),
-(15, 'iup_18', 'siup', NULL, NULL, NULL, 5201010, NULL, NULL, 0, 0, 0, 0, 0, ''),
-(16, 'iup_19', 'siup', NULL, NULL, NULL, 5202040, NULL, NULL, 0, 0, 0, 0, 0, ''),
-(17, 'iup_20', 'siup', NULL, NULL, NULL, 5201010, NULL, NULL, 0, 0, 0, 0, 0, ''),
-(18, 'tdp_19', 'tdp', NULL, NULL, NULL, 5201010, NULL, NULL, 0, 0, 0, 0, 0, ''),
-(19, 'iup_21', 'siup', NULL, NULL, NULL, 5202040, NULL, NULL, 0, 0, 0, 0, 0, ''),
-(20, 'iup_22', 'siup', NULL, NULL, NULL, 5201040, NULL, NULL, 0, 0, 0, 0, 0, ''),
-(21, 'tdp_20', 'tdp', NULL, NULL, NULL, 5201010, NULL, NULL, 0, 0, 0, 0, 0, ''),
-(22, 'tdp_21', 'tdp', NULL, NULL, NULL, 5201040, NULL, NULL, 0, 0, 0, 0, 0, ''),
-(23, 'iup_23', 'siup', NULL, NULL, NULL, 5201010, NULL, NULL, 0, 0, 0, 0, 0, ''),
-(24, 'iup_24', 'siup', NULL, NULL, NULL, 5201010, NULL, NULL, 0, 0, 0, 0, 0, ''),
-(25, 'iup_25', 'siup', NULL, NULL, NULL, 5202011, NULL, NULL, 0, 0, 0, 0, 0, '');
+(28, 'iup_35', 'siup', NULL, NULL, NULL, 5202040, NULL, NULL, 0, 0, 0, 0, 0, ''),
+(29, 'iup_36', 'siup', NULL, NULL, NULL, 0, NULL, NULL, 0, 0, 0, 0, 0, ''),
+(30, 'iup_37', 'siup', NULL, NULL, NULL, 0, NULL, NULL, 0, 0, 0, 0, 0, ''),
+(31, 'iup_38', 'siup', NULL, NULL, NULL, 0, NULL, NULL, 0, 0, 0, 0, 0, ''),
+(32, 'tdp_26', 'tdp', NULL, NULL, NULL, 0, NULL, NULL, 0, 0, 0, 0, 0, ''),
+(33, 'tdp_27', 'tdp', NULL, NULL, NULL, 0, NULL, NULL, 0, 0, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_jenisbadanusaha`
+-- Struktur dari tabel `dp_jenisbadanusaha`
 --
 
 CREATE TABLE `dp_jenisbadanusaha` (
@@ -361,7 +376,7 @@ CREATE TABLE `dp_jenisbadanusaha` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dp_jenisbadanusaha`
+-- Dumping data untuk tabel `dp_jenisbadanusaha`
 --
 
 INSERT INTO `dp_jenisbadanusaha` (`jbu_id`, `jbu_nama`, `jbu_keterangan`) VALUES
@@ -374,7 +389,7 @@ INSERT INTO `dp_jenisbadanusaha` (`jbu_id`, `jbu_nama`, `jbu_keterangan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_jenisizin`
+-- Struktur dari tabel `dp_jenisizin`
 --
 
 CREATE TABLE `dp_jenisizin` (
@@ -385,7 +400,7 @@ CREATE TABLE `dp_jenisizin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dp_jenisizin`
+-- Dumping data untuk tabel `dp_jenisizin`
 --
 
 INSERT INTO `dp_jenisizin` (`ji_id`, `ji_nama`, `ji_keterangan`, `jenis_permohonan`) VALUES
@@ -395,7 +410,7 @@ INSERT INTO `dp_jenisizin` (`ji_id`, `ji_nama`, `ji_keterangan`, `jenis_permohon
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_jenispermohonan`
+-- Struktur dari tabel `dp_jenispermohonan`
 --
 
 CREATE TABLE `dp_jenispermohonan` (
@@ -405,7 +420,7 @@ CREATE TABLE `dp_jenispermohonan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dp_jenispermohonan`
+-- Dumping data untuk tabel `dp_jenispermohonan`
 --
 
 INSERT INTO `dp_jenispermohonan` (`jp_id`, `id_jenisizin`, `jp_jenis`) VALUES
@@ -419,7 +434,7 @@ INSERT INTO `dp_jenispermohonan` (`jp_id`, `id_jenisizin`, `jp_jenis`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_kabupaten`
+-- Struktur dari tabel `dp_kabupaten`
 --
 
 CREATE TABLE `dp_kabupaten` (
@@ -429,7 +444,7 @@ CREATE TABLE `dp_kabupaten` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dp_kabupaten`
+-- Dumping data untuk tabel `dp_kabupaten`
 --
 
 INSERT INTO `dp_kabupaten` (`ID_kabupaten`, `Nama`, `ID_provinsi`) VALUES
@@ -441,7 +456,7 @@ INSERT INTO `dp_kabupaten` (`ID_kabupaten`, `Nama`, `ID_provinsi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_kecamatan`
+-- Struktur dari tabel `dp_kecamatan`
 --
 
 CREATE TABLE `dp_kecamatan` (
@@ -451,7 +466,7 @@ CREATE TABLE `dp_kecamatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dp_kecamatan`
+-- Dumping data untuk tabel `dp_kecamatan`
 --
 
 INSERT INTO `dp_kecamatan` (`ID_kecamatan`, `Nama`, `ID_kabupaten`) VALUES
@@ -469,7 +484,7 @@ INSERT INTO `dp_kecamatan` (`ID_kecamatan`, `Nama`, `ID_kabupaten`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_koordinat`
+-- Struktur dari tabel `dp_koordinat`
 --
 
 CREATE TABLE `dp_koordinat` (
@@ -480,7 +495,7 @@ CREATE TABLE `dp_koordinat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dp_koordinat`
+-- Dumping data untuk tabel `dp_koordinat`
 --
 
 INSERT INTO `dp_koordinat` (`kor_id`, `kor_lat`, `kor_long`, `kor_marker`) VALUES
@@ -496,7 +511,7 @@ INSERT INTO `dp_koordinat` (`kor_id`, `kor_lat`, `kor_long`, `kor_marker`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_pengaduan`
+-- Struktur dari tabel `dp_pengaduan`
 --
 
 CREATE TABLE `dp_pengaduan` (
@@ -511,7 +526,7 @@ CREATE TABLE `dp_pengaduan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_siup`
+-- Struktur dari tabel `dp_siup`
 --
 
 CREATE TABLE `dp_siup` (
@@ -530,8 +545,8 @@ CREATE TABLE `dp_siup` (
   `iup_tlp` varchar(16) NOT NULL,
   `iup_email` varchar(30) NOT NULL,
   `iup_website` varchar(30) DEFAULT NULL,
-  `iup_kecamatan` int(11) DEFAULT NULL,
-  `iup_desa` int(11) DEFAULT NULL,
+  `iup_kecamatan` int(11) DEFAULT '0',
+  `iup_desa` int(11) DEFAULT '0',
   `iup_dokiup` varchar(15) DEFAULT NULL,
   `iup_keterangan` text NOT NULL,
   `iup_tanggal` int(11) NOT NULL,
@@ -539,7 +554,7 @@ CREATE TABLE `dp_siup` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dp_siup`
+-- Dumping data untuk tabel `dp_siup`
 --
 
 INSERT INTO `dp_siup` (`iup_id`, `iup_kode`, `iup_ktp`, `iup_jenisizin`, `iup_jenispermohonan`, `iup_perusahaan`, `iup_pemilik`, `iup_alamatizin`, `iup_kegiatanusaha`, `iup_kelembagaan`, `iup_barang`, `iup_kekayaan`, `iup_tlp`, `iup_email`, `iup_website`, `iup_kecamatan`, `iup_desa`, `iup_dokiup`, `iup_keterangan`, `iup_tanggal`, `iup_status`) VALUES
@@ -557,12 +572,25 @@ INSERT INTO `dp_siup` (`iup_id`, `iup_kode`, `iup_ktp`, `iup_jenisizin`, `iup_je
 (22, 'iup_22', '5203040909930002', 'siup', 2, 'kjk', 'ely', 'kj', '', 'jk', 'j', 'kj', 'kj', 'k', 'jk', 5201040, 2147483647, NULL, 'jk', 2017, NULL),
 (23, 'iup_23', '989898', 'siup', 1, 'kkl', 'koi', 'ioi', '', 'klkl', 'lklk', 'lkl', 'oio', 'klk', 'lkl', 5201010, 2147483647, NULL, 'klk', 2017, 0),
 (24, 'iup_24', '132', 'siup', 1, 'hjh', 'fg', 'gfg', '', 'rtr', 'refre', 'gfg', 'gfgf', 'ghg@fgg', 'ghg', 5201010, 2147483647, NULL, 'gh', 2017, 0),
-(25, 'iup_25', '132', 'siup', 1, 'ada', 'dilah', 'gsajas', '', 'sdf', 'dds', 'dfe', '1213', 'do@sd', 'dfa', 5202011, 2147483647, NULL, 'slausa', 2017, 0);
+(25, 'iup_25', '132', 'siup', 1, 'ada', 'dilah', 'gsajas', '', 'sdf', 'dds', 'dfe', '1213', 'do@sd', 'dfa', 5202011, 2147483647, NULL, 'slausa', 2017, 0),
+(26, 'iup_26', '456', 'siup', 2, 'jhkuj', 'uyuy', 'yyuy', '', 'jkjk', 'ihkuh', 'hk', 'uyuyu', 'jhkjh', 'jhj', 5201010, 2147483647, NULL, 'jhj', 2017, 0),
+(27, '', '33.33.33.33.33.3333', 'siup', 2, 'nm', 'nkn', 'kjk', '', 'mnm', 'nm', 'nm', 'k', 'n', 'mn', 0, NULL, NULL, 'm', 2017, 0),
+(28, '', '33.33.33.33.33.3333', 'siup', 2, 'lk', 'lKLKlkJl', 'kl', '', 'lk', 'lk', 'l', 'kl', 'klk', 'lklk', 0, NULL, NULL, 'lkl', 2017, 0),
+(29, '', '33.33.33.33.33.3333', 'siup', 2, 'kj', 'jkjk', 'jk', '', 'kj', 'kj', 'k', 'jk', 'jk', 'jk', 0, NULL, NULL, 'j', 2017, 0),
+(30, '', '33.33.33.33.33.3333', 'siup', 1, 'kj', 'jkj', 'jk', '', 'kj', 'k', 'jk', 'k', 'j', 'kj', 0, NULL, NULL, 'kj', 2017, 0),
+(31, '', '33.33.33.33.33.3333', 'siup', 3, 'o', 'kolk', 'oi', '', 'io', 'i', 'oi', 'o', 'o', 'io', 0, NULL, NULL, 'ioio', 2017, 0),
+(32, '', '33.33.33.33.33.3333', 'siup', 2, 'jh', 'HJHJj', 'hj', '', 'jh', 'j', 'hj', 'hj', 'hj', 'h', 0, NULL, NULL, 'jhjh', 2017, 0),
+(33, '', '33.33.33.33.33.3333', 'siup', 2, 'h', 'hkh', 'hj', '', 'jh', 'jhjh', 'jhjh', 'hj', 'jhj', 'hj', 0, NULL, NULL, 'hjh', 2017, 0),
+(34, '', '33.33.33.33.33.3333', 'siup', 1, 'io', 'io', 'i', '', 'ioi', 'oio', 'io', 'io', 'i', 'oi', 0, NULL, NULL, 'oio', 2017, 0),
+(35, 'iup_35', '5203040909930002', 'siup', 1, 'kj', 'kj', 'k', '', 'kj', 'kj', 'kj', 'kj', 'k', 'j', 5202040, 2147483647, NULL, 'kjkk', 2017, 0),
+(36, 'iup_36', '33.33.33.33.33.3333', 'siup', 1, 'j', 'hjkhj', 'h', '', 'hjh', 'jh', 'jh', 'hj', 'j', 'hjh', 0, NULL, NULL, 'jhj', 2017, 0),
+(37, 'iup_37', '33.33.33.33.33.3333', 'siup', 1, 'jkj', 'jkjk', 'kjk', '', 'kj', 'kj', 'k', 'kj', 'jk', 'jkjk', 0, NULL, NULL, 'kjk', 2017, 0),
+(38, 'iup_38', '33.33.33.33.33.3333', 'siup', 1, 'u', 'iu', 'iu', '', 'iu', 'i', 'u', 'iu', 'iu', 'iu', 0, NULL, NULL, 'iu', 2017, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dp_tdp`
+-- Struktur dari tabel `dp_tdp`
 --
 
 CREATE TABLE `dp_tdp` (
@@ -581,13 +609,13 @@ CREATE TABLE `dp_tdp` (
   `tdp_kbli` varchar(10) NOT NULL,
   `tdp_doktdp` varchar(15) NOT NULL,
   `tdp_tanggal` int(11) NOT NULL,
-  `tdp_kecamatan` int(11) DEFAULT NULL,
-  `tdp_desa` int(11) DEFAULT NULL,
+  `tdp_kecamatan` int(11) DEFAULT '0',
+  `tdp_desa` int(11) DEFAULT '0',
   `tdp_keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dp_tdp`
+-- Dumping data untuk tabel `dp_tdp`
 --
 
 INSERT INTO `dp_tdp` (`tdp_id`, `tdp_kode`, `tdp_ktp`, `tdp_jenisizin`, `tdp_jenispermohonan`, `tdp_pemilik`, `tdp_perusahaan`, `tdp_status`, `tdp_tlp`, `tdp_alamat`, `tdp_kegiatanusaha`, `tdp_kelembagaan`, `tdp_kbli`, `tdp_doktdp`, `tdp_tanggal`, `tdp_kecamatan`, `tdp_desa`, `tdp_keterangan`) VALUES
@@ -597,12 +625,34 @@ INSERT INTO `dp_tdp` (`tdp_id`, `tdp_kode`, `tdp_ktp`, `tdp_jenisizin`, `tdp_jen
 (18, 'tdp_18', '5203040909930001', 'tdp', 2, 'iilk', 'jkj', 'kjk', 'lklkl', 'lklk', 'jk', 'kj', 'j', '', 2017, 5201011, NULL, ''),
 (19, 'tdp_19', '5203040909930002', 'tdp', 2, 'ui', 'ki', 'i', 'ui', 'uiu', 'oi', 'oio', 'oi', '', 2017, 5201010, NULL, ''),
 (20, 'tdp_20', '5203040909930002', 'tdp', 1, 'kuk', 'ioi', 'oi', 'uk', 'ukuk', 'oi', 'io', 'o', '', 2017, 5201010, NULL, ''),
-(21, 'tdp_21', '5203040909930002', 'tdp', 2, 'jkj', 'klk', 'lkl', 'kjk', 'j', 'klk', 'lkl', 'lklk', '', 2017, 5201040, NULL, '');
+(21, 'tdp_21', '5203040909930002', 'tdp', 2, 'jkj', 'klk', 'lkl', 'kjk', 'j', 'klk', 'lkl', 'lklk', '', 2017, 5201040, NULL, ''),
+(22, 'tdp_22', '5203040909930002', 'tdp', 0, '', '', '', '', '', '', '', '', '', 2017, 0, NULL, ''),
+(23, '', '33.33.33.33.33.3333', 'tdp', 2, 'jk', 'kjk', 'jk', 'kj', 'kjkj', 'jk', 'kj', 'j', '', 2017, 0, 0, ''),
+(24, '', '33.33.33.33.33.3333', 'tdp', 2, 'jk', 'jkj', 'kj', 'jkj', 'kjk', 'kj', 'jk', 'k', '', 2017, 0, 0, ''),
+(25, '', '33.33.33.33.33.3333', 'tdp', 3, 'hj', 'hj', 'hj', 'hj', 'hj', 'hj', 'jh', 'h', '', 2017, 0, 0, ''),
+(26, 'tdp_26', '33.33.33.33.33.3333', 'tdp', 3, 'ioi', 'io', 'io', 'oi', 'oi', 'io', 'oi', 'i', '', 2017, 0, 0, ''),
+(27, 'tdp_27', '33.33.33.33.33.3333', 'tdp', 1, 'klok', 'k', 'lk', 'lk', 'l', 'lk', 'k', 'l', '', 2017, 0, 0, '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kelurahan`
+-- Struktur dari tabel `dp_verifikasi`
+--
+
+CREATE TABLE `dp_verifikasi` (
+  `ver_id` int(5) NOT NULL,
+  `ver_petugas` tinyint(1) NOT NULL,
+  `ver_kasubid` tinyint(1) NOT NULL,
+  `ver_kabid` tinyint(1) NOT NULL,
+  `ver_kabad` tinyint(1) NOT NULL,
+  `ver_ket` text NOT NULL,
+  `ver_idizin` int(7) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kelurahan`
 --
 
 CREATE TABLE `kelurahan` (
@@ -615,7 +665,7 @@ CREATE TABLE `kelurahan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notifikasi`
+-- Struktur dari tabel `notifikasi`
 --
 
 CREATE TABLE `notifikasi` (
@@ -629,7 +679,7 @@ CREATE TABLE `notifikasi` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `provinces`
+-- Struktur dari tabel `provinces`
 --
 
 CREATE TABLE `provinces` (
@@ -638,7 +688,7 @@ CREATE TABLE `provinces` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `provinces`
+-- Dumping data untuk tabel `provinces`
 --
 
 INSERT INTO `provinces` (`id`, `name`) VALUES
@@ -680,7 +730,7 @@ INSERT INTO `provinces` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `regencies`
+-- Struktur dari tabel `regencies`
 --
 
 CREATE TABLE `regencies` (
@@ -690,7 +740,7 @@ CREATE TABLE `regencies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `regencies`
+-- Dumping data untuk tabel `regencies`
 --
 
 INSERT INTO `regencies` (`id`, `province_id`, `name`) VALUES
@@ -703,7 +753,7 @@ INSERT INTO `regencies` (`id`, `province_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_jenis_izin`
+-- Struktur dari tabel `tbl_jenis_izin`
 --
 
 CREATE TABLE `tbl_jenis_izin` (
@@ -713,7 +763,7 @@ CREATE TABLE `tbl_jenis_izin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_jenis_izin`
+-- Dumping data untuk tabel `tbl_jenis_izin`
 --
 
 INSERT INTO `tbl_jenis_izin` (`ji_kode_jenis`, `ji_nama_jenis`, `ji_keterangan`) VALUES
@@ -729,7 +779,7 @@ INSERT INTO `tbl_jenis_izin` (`ji_kode_jenis`, `ji_nama_jenis`, `ji_keterangan`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `villages`
+-- Struktur dari tabel `villages`
 --
 
 CREATE TABLE `villages` (
@@ -739,7 +789,7 @@ CREATE TABLE `villages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `villages`
+-- Dumping data untuk tabel `villages`
 --
 
 INSERT INTO `villages` (`id`, `district_id`, `name`) VALUES
@@ -1330,6 +1380,12 @@ INSERT INTO `villages` (`id`, `district_id`, `name`) VALUES
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`adm_id`);
+
+--
 -- Indexes for table `districts`
 --
 ALTER TABLE `districts`
@@ -1483,6 +1539,11 @@ ALTER TABLE `villages`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `adm_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `dp_datapermohonanizin`
 --
 ALTER TABLE `dp_datapermohonanizin`
@@ -1496,40 +1557,40 @@ ALTER TABLE `dp_dokpermohonan`
 -- AUTO_INCREMENT for table `dp_izin`
 --
 ALTER TABLE `dp_izin`
-  MODIFY `izin_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `izin_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `dp_siup`
 --
 ALTER TABLE `dp_siup`
-  MODIFY `iup_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `iup_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `dp_tdp`
 --
 ALTER TABLE `dp_tdp`
-  MODIFY `tdp_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `tdp_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `notifikasi`
 --
 ALTER TABLE `notifikasi`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `districts`
+-- Ketidakleluasaan untuk tabel `districts`
 --
 ALTER TABLE `districts`
   ADD CONSTRAINT `districts_regency_id_foreign` FOREIGN KEY (`regency_id`) REFERENCES `regencies` (`id`);
 
 --
--- Constraints for table `regencies`
+-- Ketidakleluasaan untuk tabel `regencies`
 --
 ALTER TABLE `regencies`
   ADD CONSTRAINT `regencies_province_id_foreign` FOREIGN KEY (`province_id`) REFERENCES `provinces` (`id`);
 
 --
--- Constraints for table `villages`
+-- Ketidakleluasaan untuk tabel `villages`
 --
 ALTER TABLE `villages`
   ADD CONSTRAINT `villages_district_id_foreign` FOREIGN KEY (`district_id`) REFERENCES `districts` (`id`);

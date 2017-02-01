@@ -1,10 +1,11 @@
-
+<br><br><br><br><br>
   <div class="logo">
     <a href="index.html">
     <center><img src="<?php echo base_url('assets/img/lobar1.png') ?>" alt=""/></center>
     </a>
 </div>
- <div class="ibox-content">
+<center>
+ <div class="ibox-content" style="width: 350px">
 
 
                     <form class="m-t" role="form" method="post" action=" <?php echo base_url('Login/ceklogin') ?>">
@@ -23,3 +24,4 @@
                     </form>
                     
                 </div>
+</center>
