@@ -5,13 +5,13 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>INSPINIA | Empty Page</title>
+    <LINK REL="SHORTCUT ICON" href="<?php echo base_url('assets/img/lobar mini.jpg') ?>">
+    <title>SPPT | Sistem Pelayanan Perizinan Terpadu</title>
 
     <link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/font-awesome/css/font-awesome.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/animate.css') ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/css/bootstrap-datetimepicker.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/css/bootstrap-datetimepicker.min.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/plugins/dataTables/dataTables.bootstrap.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/plugins/dataTables/dataTables.responsive.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/plugins/dataTables/dataTables.tableTools.min.css') ?>" rel="stylesheet">
@@ -46,10 +46,10 @@
         </div>
             <div class="footer">
                 <div class="pull-right">
-                    10GB of <strong>250GB</strong> Free.
+                    Badan Penanaman Modal dan Pelayanan Perizinan Terpadu
                 </div>
                 <div>
-                    <strong>Copyright</strong> Example Company &copy; 2014-2015
+                    <strong>Copyright</strong> Pemerintah Kabupaten Lombok Barat; 2016-2017
                 </div>
             </div>
 
