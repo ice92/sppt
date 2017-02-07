@@ -65,6 +65,18 @@ class M_izin extends CI_Model {
 			return $query->result_array();
 		}
 
+		function getDataverifikasi($ktp=false){
+
+			$query=$this->db->query('SELECT * FROM dp_siup where iup_approve1 = 0 ');
+			return $query->result_array();
+		}
+
+		function getDataverifikasi2($ktp=false){
+
+			$query=$this->db->query('SELECT * FROM dp_tdp where tdp_approve1 = 0');
+			return $query->result_array();
+		}
+
 	function getsiup(){
 
 	}

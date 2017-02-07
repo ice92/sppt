@@ -43,7 +43,7 @@
 
                 </div>
             </div>
-        </div> -->
+        </div> 
             <div class="footer">
                 <div class="pull-right">
                     Badan Penanaman Modal dan Pelayanan Perizinan Terpadu

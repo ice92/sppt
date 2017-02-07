@@ -27,7 +27,7 @@ class Login extends CI_Controller {
         }
         else if($this->login->cek()=='2')
 		{
-			redirect('verifikasi');
+			redirect('verifikasi/petugas');
 		}
         else if($this->login->cek()=='3')
             echo 'anda login sebagai kasubid';

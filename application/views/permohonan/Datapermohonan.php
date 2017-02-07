@@ -1,5 +1,3 @@
-
-<form></form>
 <div class="table-responsive">
 	
 	<table class="table table-striped table-bordered table-hover dataTables-example" >
@@ -43,7 +41,7 @@
 									</td>
 									<td>
 										 <?php 
-										 	if($value['iup_status']==0){
+										 	if($value['iup_approve1']==0&& $value['iup_approve2']==0&& $value['iup_approve3']==0&& $value['iup_approve4']==0){
 										 		echo '<div class="label label-sm label-warning">Sedang Diproses</div>';
 										 	}else{
 										 		echo '<div class="label label-sm label-success">Sudah Terbit</div>';
@@ -82,7 +80,7 @@
 									</td>
 									<td>
 										<?php 
-										 	if($value['tdp_status']==0){
+										 	if($value['tdp_approve1']==0&& $value['tdp_approve2']==0&& $value['tdp_approve3']==0&& $value['tdp_approve4']==0){
 										 		echo '<div class="label label-sm label-warning">Sedang Diproses</div>';
 										 	}else{
 										 		echo '<div class="label label-sm label-success">Sudah Terbit</div>';

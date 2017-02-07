@@ -8,7 +8,6 @@ class Permohonan extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_izin','izin',true);
 		$this->load->model('M_wilayah','wil',true);
-		$this->load->model('M_izin','izin',true);
 	}
 
 	public function index()
