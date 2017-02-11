@@ -15,7 +15,9 @@ class Login extends CI_Controller {
 			'konten'=>'login/Login',
 		);
 
+
 		$this->load->view('template/Template2',$data);           
+
                
 	}
 
@@ -26,9 +28,11 @@ class Login extends CI_Controller {
        		redirect('permohonan');
         }
         else if($this->login->cek()=='2')
+
 		{
 			redirect('verifikasi/petugas');
 		}
+
         else if($this->login->cek()=='3')
             echo 'anda login sebagai kasubid';
         else if($this->login->cek()=='4')
