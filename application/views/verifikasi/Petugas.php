@@ -2,7 +2,7 @@
                 <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Daftar Data Yang Belum Terverifikasi</h5>
+                        <h5>Daftar Data SIUP Yang Belum Terverifikasi</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -24,7 +24,7 @@
                     <div class="ibox-content">
 
                 <table class="table-responsive">
-                DATA SIUP
+                SIUP
     
     <table class="table table-striped table-bordered table-hover dataTables-example">
     <thead>
@@ -63,7 +63,7 @@
         
     </tbody>
 </table>
-Data TDP
+TDP
 <table class="table table-striped table-bordered table-hover dataTables-example">
     <thead>
     <tr>
