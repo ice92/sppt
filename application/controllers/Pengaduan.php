@@ -23,6 +23,20 @@ class Pengaduan extends CI_Controller {
                 redirect('Login');
 	
 	}
+	public function simpanpanduan(){
+		date_default_timezone_set("Asia/Jakarta");
+		$data = array(
+			'pengaduan_ktp'=> $this->session->userdata('dp_ktp'),
+			'pengaduan_nama' => $this->input->post('nama'),
+			'pengaduan_desa' => $this->input->post('desa'),
+			'pengaduan_tanggal'=>date("Y-m-d"),
+			'pengaduan_pengaduan'=> $this->input->post('pengaduan'));
+
+		$simpanpanduan = $this->izin->getDatapengaduan($data);
+
+	}
+
+
 
 	
 	

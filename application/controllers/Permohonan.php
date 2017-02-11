@@ -42,7 +42,7 @@ class Permohonan extends CI_Controller {
 		$ijin=$this->input->post('jenisizin');
 		if ($ijin=='siup') {
 
-			$data = array(
+			$data = array( 
 			'iup_ktp' => $this->session->userdata('dp_ktp'),
 			'iup_jenisizin'=>$this->input->post('jenisizin'),
 			'iup_jenispermohonan'=>$this->input->post('jp_id'),

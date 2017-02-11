@@ -29,14 +29,20 @@ class Login extends CI_Controller {
 		{
 			redirect('verifikasi/petugas');
 		}
+
         else if($this->login->cek()=='3')
             echo 'anda login sebagai kasubid';
+
         else if($this->login->cek()=='4')
             echo 'anda login sebagai kabid';
+
         else if($this->login->cek()=='5')
             echo 'anda login sebagai kabad';
+
         else if($this->login->cek()=='6')
-            echo 'anda login sebagai admin';
+        {
+            redirect('Verifikasi/admin');
+        }
         else{   
             echo 'anda gagal login';
         }

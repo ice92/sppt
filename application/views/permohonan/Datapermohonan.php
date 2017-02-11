@@ -1,5 +1,5 @@
 <div class="table-responsive">
-	
+Data SIUP
 	<table class="table table-striped table-bordered table-hover dataTables-example" >
 <thead>
 	<tr>
@@ -14,7 +14,6 @@
 	</tr>
 </thead>
 <tbody>
-<form method="psot" action="<?php echo base_url('Permohonan/doksyarat') ?>">
 	<?php foreach ($dataizinsiup as $value) {$no++;?>
 								<tr>
 									<td>
@@ -52,7 +51,23 @@
 								
 								
 								<?php } ?>
+</tbody>
+</table>
 
+Data TDP
+<table class="table table-striped table-bordered table-hover dataTables-example" >
+<thead>
+	<tr>
+	<th>No	</th>
+	<th>Izin</th>
+	<th>Permohonan</th>
+	<th>Lokasi Izin</th>
+	<th>Nama Usaha / Perusahaan</th>
+	<th>Dokumen</th>
+	<th>Data Lengkap</th>
+	<th>Status</th>
+	</tr>
+</thead>
 	<?php foreach ($dataizintdp as $value) {$no++;?>
 								<tr>
 									<td>
@@ -91,11 +106,6 @@
 								</tr>
 								
 								<?php } ?>
-</form>
-
-
-
-</tbody>
 </table>
 
 </div>

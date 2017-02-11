@@ -43,7 +43,7 @@ class Verifikasi extends CI_Controller {
 	public function Kabid(){
 		if ( $this->session->userdata('login')){
 			$data = array(
-				'konten' => 'verifikasi/Kabid' , );
+			'konten' => 'verifikasi/Kabid' , );
 			$this->load->view('template/Template3', $data);
 
 	}
@@ -57,13 +57,18 @@ class Verifikasi extends CI_Controller {
 
 	}
 }
-	public function adminsystem(){
-		if ($this->session->userdata('login')) {
-			$data = array(
-				'konten' => 'verifikasi/adminsystem');
-			$this->load->view('template/Template3', $data);
-			# code...
-		}
+	public function Admin(){
+		if($this->session->userdata('login')){
+		$data = array(
+			'konten'=>'verifikasi/adminsystem',
+			'no'=>0,
+			'datapetugas'=>$this->izin->getDatapetugas()
+			);
+		$this->load->view('template/Template3',$data);
+            }
+            else
+                redirect('Login');
+
 	}
 
 }

@@ -6,6 +6,7 @@ class M_izin extends CI_Model {
 	public $db_tabel2='dp_siup';
 	public $db_tabel3='dp_tdp';
 	public $db_tabel4='dp_izin';
+	public $db_tabel5='dp_pengaduan';
  
 
 
@@ -75,6 +76,17 @@ class M_izin extends CI_Model {
 
 			$query=$this->db->query('SELECT * FROM dp_tdp where tdp_approve1 = 0');
 			return $query->result_array();
+		}
+
+		function getDatapetugas(){
+			$query=$this->db->query('SELECT * FROM dp_akun');
+			return $query->result_array();
+		
+		}
+
+		function getDatapengaduan($data){
+			return $this->db->insert($this->db_tabel5,$data);
+
 		}
 
 	function getsiup(){
